@@ -1,54 +1,92 @@
 <!DOCTYPE html>
-<!-- 위 한 줄은 "이 문서는 HTML입니다"라고 브라우저에게 알리는 선언이에요 -->
+<!-- Apple 디자인 시스템 적용 버전 (연습용) -->
+<!-- 핵심: 넉넉한 여백, SF 계열 폰트, Action Blue(#0066cc), 둥근 알약 버튼 -->
 <html lang="ko">
-<!-- html: 페이지 전체를 감싸는 태그. lang="ko"는 "한국어 페이지"라는 뜻 -->
-
 <head>
-  <!-- head: 눈에 보이지 않는 설정 구역 -->
   <meta charset="UTF-8">
-  <!-- charset: 한글 깨짐 방지. 없으면 한글이 ????로 보여요 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- viewport: 모바일 화면 크기에 맞추라는 설정 -->
   <title>결의 블로그</title>
-  <!-- title: 브라우저 탭에 보이는 제목 -->
   <style>
-    /* style: 디자인 구역. CSS라는 언어로 씁니다 */
-    body { font-family: sans-serif; max-width: 640px; margin: 40px auto; padding: 0 20px; line-height: 1.7; color: #333; }
-    h1 { color: #1a73e8; }
-    .post { background: #f5f7fa; border-radius: 12px; padding: 20px; margin-top: 24px; }
-    footer { margin-top: 40px; font-size: 13px; color: #888; }
+    /* Apple 타이포: 시스템 폰트 스택 (애플 기기에서는 SF Pro로 보임) */
+    body {
+      font-family: -apple-system, "SF Pro Text", system-ui, sans-serif;
+      margin: 0; color: #1d1d1f; background: #ffffff;
+      line-height: 1.47; letter-spacing: -0.374px;
+    }
+    /* 상단 검은 내비게이션 바 (높이 44px, 작은 글자) */
+    nav {
+      background: #000000; height: 44px;
+      display: flex; align-items: center; justify-content: center; gap: 32px;
+    }
+    nav a { color: #ffffff; text-decoration: none; font-size: 12px; letter-spacing: -0.12px; opacity: 0.9; }
+    nav a:hover { opacity: 1; }
+    /* 히어로: 큰 제목 56px, 굵기 600, 자간 좁게 */
+    .hero { text-align: center; padding: 80px 20px; }
+    .hero h1 {
+      font-family: -apple-system, "SF Pro Display", system-ui, sans-serif;
+      font-size: 56px; font-weight: 600; line-height: 1.07; letter-spacing: -0.28px;
+      margin: 0 0 16px;
+    }
+    .hero p { font-size: 21px; color: #1d1d1f; margin: 0; }
+    /* 알약 버튼: 파란 배경 + 완전 둥근 모서리 */
+    .btn {
+      display: inline-block; margin-top: 24px;
+      background: #0066cc; color: #ffffff; text-decoration: none;
+      padding: 11px 22px; border-radius: 9999px; font-size: 17px;
+    }
+    .btn:hover { background: #0071e3; }
+    /* 파치먼트 섹션: #f5f5f7 배경의 카드 영역 */
+    .section-parchment { background: #f5f5f7; padding: 80px 20px; text-align: center; }
+    .section-parchment h2 {
+      font-family: -apple-system, "SF Pro Display", system-ui, sans-serif;
+      font-size: 40px; font-weight: 600; letter-spacing: -0.28px; margin: 0 0 12px;
+    }
+    .section-parchment p { font-size: 17px; max-width: 600px; margin: 0 auto 8px; }
+    /* 텍스트 링크: 파란색 (#0066cc) */
+    a.link { color: #0066cc; text-decoration: none; font-size: 17px; }
+    a.link:hover { text-decoration: underline; }
+    /* 글 목록 영역 */
+    .posts { max-width: 680px; margin: 0 auto; padding: 80px 20px; }
+    .posts h2 {
+      font-family: -apple-system, "SF Pro Display", system-ui, sans-serif;
+      font-size: 34px; font-weight: 600; letter-spacing: -0.374px; margin: 0 0 24px;
+    }
+    .posts li { margin-bottom: 12px; font-size: 17px; }
+    .posts .date { color: #7a7a7a; font-size: 14px; }
+    footer {
+      background: #f5f5f7; padding: 24px 20px; text-align: center;
+      font-size: 12px; color: #7a7a7a; letter-spacing: -0.12px;
+    }
   </style>
 </head>
-
 <body>
-  <!-- body: 눈에 보이는 실제 내용 구역 -->
 
-  <h1>결의 블로그</h1>
-  <!-- h1: 가장 큰 제목 -->
+  <nav>
+    <a href="index.html">결의 블로그</a>
+    <a href="#posts">글 목록</a>
+    <a href="https://github.com/luyknah/my-blog">GitHub</a>
+  </nav>
 
-  <p>IT 기기와 AI 활용 경험을 기록하는 블로그입니다. </p>
-  <!-- p: 문단 -->
-  <img src="images/logo.jpg" alt="한자 이름" style="width:100%; border-radius:12px;">
-
-
-  <div class="post">
-    <!-- div: 내용 묶음 상자. class="post"는 위 style에서 꾸민 이름 -->
-    <h2>첫 글: AI 활용 스킬을 시작한 이유</h2>
-    <!-- h2: h1보다 한 단계 작은 제목 -->
-    <p>IT 분야, 특히 IT 기기에 관심이 많아 AI 활용 스킬을 쌓기로 했습니다. 작은 실습부터 차근차근 기록해 보려고 합니다.</p>
-    <a href="https://github.com">GitHub 구경하기</a>
-    <!-- a: 링크. href="주소"를 누르면 이동해요 -->
+  <div class="hero">
+    <h1>결의 블로그.</h1>
+    <p>IT 기기와 AI 활용 경험을 기록합니다.</p>
+    <a class="btn" href="#posts">글 보러 가기</a>
   </div>
 
-  <h2>글 목록</h2>
-  <!-- ul: 순서 없는 목록 (• 글머리 기호가 붙어요) -->
-  <ul>
-    <!-- href="post2.html"은 같은 폴더의 post2.html 파일로 연결돼요 -->
-    <li><a href="post2.html">GitHub Pages로 홈페이지 배포하기</a> (2026-10-13)</li>
-  </ul>
+  <div class="section-parchment">
+    <h2>첫 글.</h2>
+    <p><strong>AI 활용 스킬을 시작한 이유</strong></p>
+    <p>IT 분야, 특히 IT 기기에 관심이 많아 AI 활용 스킬을 쌓기로 했습니다. 작은 실습부터 차근차근 기록해 보려고 합니다.</p>
+  </div>
 
-  <footer>© 2026 결의 블로그</footer>
-  <!-- footer: 페이지 맨 아래 꼬리말 -->
+  <div class="posts" id="posts">
+    <h2>글 목록</h2>
+    <ul>
+      <li><a class="link" href="post2.html">GitHub Pages로 홈페이지 배포하기</a> <span class="date">2026-10-13</span></li>
+    </ul>
+  </div>
+
+  <footer>© 2026 결의 블로그. Apple 디자인 시스템으로 연습 중.</footer>
 
 </body>
 </html>
