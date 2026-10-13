@@ -1,92 +1,97 @@
 <!DOCTYPE html>
-<!-- Apple 디자인 시스템 적용 버전 (연습용) -->
-<!-- 핵심: 넉넉한 여백, SF 계열 폰트, Action Blue(#0066cc), 둥근 알약 버튼 -->
+<!-- Notion 디자인 시스템 적용 버전 (연습용) -->
+<!-- 핵심: 따뜻한 오프화이트(#f6f5f4), 굵은 Inter 제목, 자신감 있는 파란색(#0075de) -->
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>결의 블로그</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Apple 타이포: 시스템 폰트 스택 (애플 기기에서는 SF Pro로 보임) */
+    /* Notion 타이포: Inter 폰트, 제목은 굵게(700) */
     body {
-      font-family: -apple-system, "SF Pro Text", system-ui, sans-serif;
-      margin: 0; color: #1d1d1f; background: #ffffff;
-      line-height: 1.47; letter-spacing: -0.374px;
+      font-family: "Inter", -apple-system, sans-serif;
+      margin: 0; color: #000000; background: #ffffff;
+      line-height: 1.5; font-size: 16px;
     }
-    /* 상단 검은 내비게이션 바 (높이 44px, 작은 글자) */
+    /* 내비게이션: 흰 배경, 얇은 밑줄 */
     nav {
-      background: #000000; height: 44px;
-      display: flex; align-items: center; justify-content: center; gap: 32px;
+      background: #ffffff; border-bottom: 1px solid #e6e6e6;
+      padding: 16px; display: flex; justify-content: center; gap: 28px;
     }
-    nav a { color: #ffffff; text-decoration: none; font-size: 12px; letter-spacing: -0.12px; opacity: 0.9; }
-    nav a:hover { opacity: 1; }
-    /* 히어로: 큰 제목 56px, 굵기 600, 자간 좁게 */
-    .hero { text-align: center; padding: 80px 20px; }
-    .hero h1 {
-      font-family: -apple-system, "SF Pro Display", system-ui, sans-serif;
-      font-size: 56px; font-weight: 600; line-height: 1.07; letter-spacing: -0.28px;
-      margin: 0 0 16px;
+    nav a { color: #000000; text-decoration: none; font-size: 15px; font-weight: 500; }
+    nav a:hover { color: #0075de; }
+    /* 히어로: 64px 굵은 제목 */
+    .hero { text-align: center; padding: 96px 20px; max-width: 800px; margin: 0 auto; }
+    .hero .eyebrow {
+      display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+      color: #0075de; background: #ffffff; border: 1px solid #e6e6e6;
+      padding: 4px 12px; border-radius: 9999px; margin-bottom: 20px;
     }
-    .hero p { font-size: 21px; color: #1d1d1f; margin: 0; }
-    /* 알약 버튼: 파란 배경 + 완전 둥근 모서리 */
+    .hero h1 { font-size: 64px; font-weight: 700; line-height: 1.0; letter-spacing: -2.125px; margin: 0 0 20px; }
+    .hero p { font-size: 20px; color: #31302e; margin: 0 0 32px; }
+    /* 기본 버튼: 파란 알약 버튼 */
     .btn {
-      display: inline-block; margin-top: 24px;
-      background: #0066cc; color: #ffffff; text-decoration: none;
-      padding: 11px 22px; border-radius: 9999px; font-size: 17px;
+      display: inline-block; background: #0075de; color: #ffffff; text-decoration: none;
+      font-weight: 500; padding: 12px 28px; border-radius: 9999px; font-size: 16px;
     }
-    .btn:hover { background: #0071e3; }
-    /* 파치먼트 섹션: #f5f5f7 배경의 카드 영역 */
-    .section-parchment { background: #f5f5f7; padding: 80px 20px; text-align: center; }
-    .section-parchment h2 {
-      font-family: -apple-system, "SF Pro Display", system-ui, sans-serif;
-      font-size: 40px; font-weight: 600; letter-spacing: -0.28px; margin: 0 0 12px;
+    .btn:hover { background: #005bab; }
+    /* 카드 섹션: 오프화이트 배경 + 흰 카드 */
+    .cards { background: #f6f5f4; padding: 72px 20px; }
+    .cards-inner { max-width: 800px; margin: 0 auto; }
+    .cards h2 { font-size: 40px; font-weight: 700; letter-spacing: -1px; margin: 0 0 28px; text-align: center; }
+    .card {
+      background: #ffffff; border: 1px solid #e6e6e6; border-radius: 16px;
+      padding: 28px; margin-bottom: 16px;
     }
-    .section-parchment p { font-size: 17px; max-width: 600px; margin: 0 auto 8px; }
-    /* 텍스트 링크: 파란색 (#0066cc) */
-    a.link { color: #0066cc; text-decoration: none; font-size: 17px; }
-    a.link:hover { text-decoration: underline; }
-    /* 글 목록 영역 */
-    .posts { max-width: 680px; margin: 0 auto; padding: 80px 20px; }
-    .posts h2 {
-      font-family: -apple-system, "SF Pro Display", system-ui, sans-serif;
-      font-size: 34px; font-weight: 600; letter-spacing: -0.374px; margin: 0 0 24px;
-    }
-    .posts li { margin-bottom: 12px; font-size: 17px; }
-    .posts .date { color: #7a7a7a; font-size: 14px; }
-    footer {
-      background: #f5f5f7; padding: 24px 20px; text-align: center;
-      font-size: 12px; color: #7a7a7a; letter-spacing: -0.12px;
-    }
+    .card h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.25px; margin: 0 0 8px; }
+    .card p { color: #615d59; margin: 0 0 12px; font-size: 15px; }
+    .card a { color: #0075de; text-decoration: none; font-weight: 500; font-size: 15px; }
+    .card a:hover { text-decoration: underline; }
+    /* 글 목록 */
+    .posts { max-width: 800px; margin: 0 auto; padding: 72px 20px; }
+    .posts h2 { font-size: 26px; font-weight: 700; letter-spacing: -0.625px; margin: 0 0 20px; }
+    .posts li { margin-bottom: 10px; font-size: 16px; }
+    .posts a { color: #0075de; text-decoration: none; font-weight: 500; }
+    .posts a:hover { text-decoration: underline; }
+    .posts .date { color: #a39e98; font-size: 14px; }
+    footer { border-top: 1px solid #e6e6e6; padding: 24px 20px; text-align: center; font-size: 14px; color: #a39e98; }
   </style>
 </head>
 <body>
 
   <nav>
-    <a href="index.html">결의 블로그</a>
+    <a href="index.html"><strong>결의 블로그</strong></a>
     <a href="#posts">글 목록</a>
     <a href="https://github.com/luyknah/my-blog">GitHub</a>
   </nav>
 
   <div class="hero">
-    <h1>결의 블로그.</h1>
-    <p>IT 기기와 AI 활용 경험을 기록합니다.</p>
+    <span class="eyebrow">PERSONAL BLOG</span>
+    <h1>결의 블로그</h1>
+    <p>IT 기기와 AI 활용 경험을 기록하는 공간입니다.</p>
     <a class="btn" href="#posts">글 보러 가기</a>
   </div>
 
-  <div class="section-parchment">
-    <h2>첫 글.</h2>
-    <p><strong>AI 활용 스킬을 시작한 이유</strong></p>
-    <p>IT 분야, 특히 IT 기기에 관심이 많아 AI 활용 스킬을 쌓기로 했습니다. 작은 실습부터 차근차근 기록해 보려고 합니다.</p>
+  <div class="cards">
+    <div class="cards-inner">
+      <h2>첫 글</h2>
+      <div class="card">
+        <h3>AI 활용 스킬을 시작한 이유</h3>
+        <p>IT 분야, 특히 IT 기기에 관심이 많아 AI 활용 스킬을 쌓기로 했습니다. 작은 실습부터 차근차근 기록해 보려고 합니다.</p>
+        <a href="post2.html">두 번째 글 보러 가기 →</a>
+      </div>
+    </div>
   </div>
 
   <div class="posts" id="posts">
     <h2>글 목록</h2>
     <ul>
-      <li><a class="link" href="post2.html">GitHub Pages로 홈페이지 배포하기</a> <span class="date">2026-10-13</span></li>
+      <li><a href="post2.html">GitHub Pages로 홈페이지 배포하기</a> <span class="date">2026-10-13</span></li>
     </ul>
   </div>
 
-  <footer>© 2026 결의 블로그. Apple 디자인 시스템으로 연습 중.</footer>
+  <footer>© 2026 결의 블로그 · Notion 디자인 시스템으로 연습 중</footer>
 
 </body>
 </html>
